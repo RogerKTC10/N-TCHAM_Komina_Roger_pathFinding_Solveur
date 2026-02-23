@@ -2,8 +2,6 @@ import Pkg
 Pkg.add("Plots")
 using Plots
 
-#using .Struct_Carte
-
 function affichage_BFS(carte, chemin, distance, activite)
     grille_recup  = zeros(Int, carte.height, carte.width)
     for i in 1:carte.height
