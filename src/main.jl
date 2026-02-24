@@ -10,7 +10,7 @@ include("Comparaison.jl")
 include("affichage.jl")
 
 function main()
-    path = "data/street-map/Sydney_1_256.map"
+    path = "data/street-map/Shangai_1_256.map"
     matrice = Remplir_Matrice_Cons(path)
     matriceV = Remplir_Matrice_Value(matrice)
 
