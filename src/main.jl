@@ -2,6 +2,7 @@ include("Security_Transformation/FileSecurity.jl")
 include("Security_Transformation/Transformation.jl")
 include("My_Algorithms/Utils_Algorithms.jl")
 include("My_Algorithms/BFS_Doc/BFS.jl")
+include("My_Algorithms/DataStructure_Min.jl")
 include("My_Algorithms/Djistkra_Doc/Djistkra.jl")
 include("Comparaison.jl")
 include("affichage.jl")
@@ -10,7 +11,7 @@ function main()
     path = "data/street-map/Paris_0_1024.map"
     matrice = Remplir_Matrice_Cons(path)
     matriceV = Remplir_Matrice_Value(matrice)
-    
+
     carte = Struct_Carte.Constructeur_Matrice_Cons(matrice)
     carte_djis =  Struct_Carte.Constructeur_Matrice_Value(matriceV)
     depart = (121, 180)
