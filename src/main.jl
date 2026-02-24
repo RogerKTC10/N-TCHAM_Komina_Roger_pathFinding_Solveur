@@ -18,17 +18,23 @@ function main()
     depart = (121, 180)
     arriver = (1020, 1024)
 
-    res = execution_BFS(carte, depart, arriver);
+    
+    
+    println("BFS Lancement \n")
+    res = execution_BFS(carte, depart, arriver)
+
+    println("Djistra Lancement \n")
     res_djis = execution_Djisktra(carte_djis, depart, arriver)
 
-    println(res, "\n")
-    println("Djistra Chemin \n", res_djis)
+    #Resulta de BFS et Djistkra
+    println("\n--- RÉSULTATS ---")
+    println("BFS      : Coût = $(res_bfs.distance) | Activité = $(res_bfs.activite)")
+    println("Dijkstra : Coût = $(res_djis.cout) | Activité = $(res_djis.activite)")
 
-    #Resulta de BFS
-    println("BFS : Distance = $dist_bfs | Activité = $activite_bfs")
+    #Visuel BFS
     affichage_BFS(carte, res.chemin, res.distance, res.activite)
     
-    #Resultat Djistkra
+    #Visuel Djistkra
     affichage_Djistkra(carte_djis, res_djis.chemin, res_djis.distance, res_djis.activite)
      
     #-------------------------UN TRUC OPTIONNELLE QUE J4AI MISE------------------------- 
