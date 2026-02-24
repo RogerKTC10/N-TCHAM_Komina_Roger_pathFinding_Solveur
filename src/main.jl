@@ -10,7 +10,7 @@ include("Comparaison.jl")
 include("affichage.jl")
 
 function main()
-    path = "data/wc3maps512-map/battleground.map"
+    path = "data/street-map/Berlin_0_256.map"
     matrice = Remplir_Matrice_Cons(path)
     matriceV = Remplir_Matrice_Value(matrice)
 

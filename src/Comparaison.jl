@@ -2,16 +2,12 @@ include("My_Algorithms/BFS_Doc/BFS.jl")
 include("My_Algorithms/Utils_Algorithms.jl")
 
 #Mes prpre doutes d'Action
+#Ca m'a permis de tester donc BFS et Djistkra sur des point de depart et d'arriver douteuse
 function trouver_points_pieges(matriceChar)
     h, w = size(matriceChar)
-    
-    # On cherche une zone où il y a de l'eau
     for i in 100:h-100
         for j in 100:w-100
-            # Si on trouve un pixel d'eau
             if matriceChar[i, j] == 'W'
-                # On regarde si on peut trouver du sol à gauche et à droite de l'eau
-                # (Par exemple à 20 pixels de distance)
                 if matriceChar[i, j-20] == '.' && matriceChar[i, j+20] == '.'
                     println("🎯 Piège trouvé !")
                     println("Départ (sol) : ", (i, j-20))
