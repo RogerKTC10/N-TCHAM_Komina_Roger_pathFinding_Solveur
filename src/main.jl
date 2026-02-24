@@ -25,7 +25,7 @@ function main()
     println("BFS : Distance = $dist_bfs | Activité = $activite_bfs")
     affichage_BFS(carte, res.chemin, res.distance, res.activite)
     #Resultat Djistkra
-    println("Dijkstra : Coût = $cout_djis | Activité = $activite_djis")
+    #println("Dijkstra : Coût = $cout_djis | Activité = $activite_djis")
     affichage_Djistkra(carte_djis, res_djis.chemin, res_djis.distance, res_djis.activite)
      
     #-------------------------UN TRUC OPTIONNELLE QUE J4AI MISE------------------------- 
