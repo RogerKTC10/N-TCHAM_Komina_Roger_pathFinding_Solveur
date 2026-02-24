@@ -17,9 +17,8 @@ function main()
     carte = Struct_Carte.Constructeur_Matrice_Cons(matrice)
     carte_djis = Struct_Carte.Constructeur_Matrice_Value(matriceV)
 
-    # Test sur une distance significative
-    depart = (84, 1000)
-    arriver = (590, 400)
+    depart = (0, 0)
+    arriver = (380, 200)
 
     println("Lancement BFS...")
     res_bfs = execution_BFS(carte, depart, arriver)
@@ -27,17 +26,10 @@ function main()
     println("Lancement Dijkstra...")
     res_djis = execution_Djisktra(carte_djis, depart, arriver)
 
-    #--- LE CALCUL SÉRIEUX ---
-    # On passe bien 'matrice' (les Char) pour que 'valuation' fonctionne
     cout_reel_bfs = calculer_cout_chemin(res_bfs.chemin, matrice)
 
-    println("\n--- COMPARAISON DES PERFORMANCES ---")
     println("BFS      | Coût Réel: $cout_reel_bfs | États: $(res_bfs.activite)")
     println("Dijkstra | Coût Réel: $(res_djis.cout) | États: $(res_djis.activite)")
-
-    if cout_reel_bfs > res_djis.cout
-        println("\nVictoire : Dijkstra a trouvé un chemin moins cher de $(cout_reel_bfs - res_djis.cout) points !")
-    end
 end
 
 main()
