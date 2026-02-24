@@ -15,8 +15,8 @@ function main()
     carte = Struct_Carte.Constructeur_Matrice_Cons(matrice)
     carte_djis =  Struct_Carte.Constructeur_Matrice_Value(matriceV)
 
-    depart = (121, 180)
-    arriver = (1020, 1024)
+    depart = (450, 420)
+    arriver = (510, 480)
 
     
     
