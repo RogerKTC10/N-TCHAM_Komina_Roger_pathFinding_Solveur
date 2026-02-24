@@ -28,7 +28,7 @@ function main()
 
     #Resulta de BFS et Djistkra
     println("\n--- RÉSULTATS ---")
-    println("BFS      : Coût = $(res_bfs.distance) | Activité = $(res_bfs.activite)")
+    println("BFS      : Coût = $(res.distance) | Activité = $(res.activite)")
     println("Dijkstra : Coût = $(res_djis.cout) | Activité = $(res_djis.activite)")
 
     #Visuel BFS
