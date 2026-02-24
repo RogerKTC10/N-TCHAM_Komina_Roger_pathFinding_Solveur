@@ -35,7 +35,7 @@ function main()
     affichage_BFS(carte, res.chemin, res.distance, res.activite)
     
     #Visuel Djistkra
-    affichage_Djistkra(carte_djis, res_djis.chemin, res_djis.distance, res_djis.activite)
+    affichage_Djistkra(carte_djis, res_djis.chemin, res_djis.cout, res_djis.activite)
      
     #-------------------------UN TRUC OPTIONNELLE QUE J4AI MISE------------------------- 
     #cout_BFS = Cout_dist_BFS(res.chemin, matriceV)
