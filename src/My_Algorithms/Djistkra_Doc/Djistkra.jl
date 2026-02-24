@@ -44,7 +44,7 @@ function execution_Djisktra(G::Struct_Carte.Carte_Final_Value_Struct, vdepart, v
     if haskey(parents, varriver)
        chemin_djisktra = reconstruire_chemin(parents, vdepart, varriver)
        cout_total_parcours  = distance_djis[varriver]
-       return (chemin_djisktra, cout_total_parcours, activite = nb_etat_evaluer)
+       return (chemin = chemin_djisktra, cout = cout_total_parcours, activite = nb_etat_evaluer)
     else
         return (chemin = [], cout = Inf, activite = nb_etat_evaluer)
     end
