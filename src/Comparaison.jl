@@ -2,15 +2,19 @@ include("My_Algorithms/BFS_Doc/BFS.jl")
 include("My_Algorithms/Utils_Algorithms.jl")
 
 #---Spécifiquement pour le BFS------
-function Cout_dist_BFS(chemin, valuate_Matrice)
-    cout_parcours =  0.0
-        for coord in view(chemin, 2:length(chemin))
-            (i, j) = coord
-            val = valuate_Matrice[i, j]
+function calculer_cout_chemin(chemin, matriceV)
+    # Si le chemin est vide (pas de solution), le coût est infini
+    if isempty(chemin)
+        return Inf
+    end
 
-            cout_parcours += val
-        end
-    return cout_parcours
+    total = 0.0
+    for pos in chemin
+        # On extrait les coordonnées du tuple (i, j)
+        i, j = pos
+        total += matriceV[i, j]
+    end
+    return total
 end
 
 function CPUtime()

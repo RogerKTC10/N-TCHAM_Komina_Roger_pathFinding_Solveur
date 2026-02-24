@@ -26,9 +26,10 @@ function main()
     println("Djistra Lancement \n")
     res_djis = execution_Djisktra(carte_djis, depart, arriver)
 
+    cout_reel_bfs = calculer_cout_chemin(res.chemin, matriceV)
     #Resulta de BFS et Djistkra
     println("\n--- RÉSULTATS ---")
-    println("BFS      : Coût = $(res.distance) | Activité = $(res.activite)")
+    println("BFS      : Coût Réel = $cout_reel_bfs | Activité = $(res.activite)")
     println("Dijkstra : Coût = $(res_djis.cout) | Activité = $(res_djis.activite)")
 
     #Visuel BFS
