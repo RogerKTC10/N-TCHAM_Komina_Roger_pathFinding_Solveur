@@ -17,7 +17,7 @@ function main()
     carte = Struct_Carte.Constructeur_Matrice_Cons(matrice)
     carte_djis = Struct_Carte.Constructeur_Matrice_Value(matriceV)
 
-    depart = (0, 0)
+    depart = (0, 10)
     arriver = (380, 200)
 
     println("Lancement BFS...")
