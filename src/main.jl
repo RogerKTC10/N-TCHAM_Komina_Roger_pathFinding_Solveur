@@ -4,12 +4,13 @@ include("Security_Transformation/Transformation.jl")
 include("My_Algorithms/Utils_Algorithms.jl")
 include("My_Algorithms/BFS_Doc/BFS.jl")
 include("My_Algorithms/Djistkra_Doc/Djistkra.jl")
-# Si ta fonction calculer_cout_chemin est ici :
+
+
 include("Comparaison.jl") 
 include("affichage.jl")
 
 function main()
-    path = "data/street-map/Paris_0_1024.map"
+    path = "data/wc3maps512-map/battleground.map"
     matrice = Remplir_Matrice_Cons(path)
     matriceV = Remplir_Matrice_Value(matrice)
 
