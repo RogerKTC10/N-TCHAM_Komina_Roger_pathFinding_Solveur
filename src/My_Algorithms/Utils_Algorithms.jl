@@ -2,12 +2,10 @@
 #----------LA PARTIE QUI CONCERNE UNIQUEMENT LE BFS--------------------
 
 function BFS_dic_Action(i::Char)
-    if (i == '@' || i == 'T')
+    if (i == '@')
         return ("Zone de blocage, passage refusé", false)
-    elseif (i == '.' || i == 'S' || i == 'W')
-        return ("Passage facile pour le BFS", true)
     else
-        return ("Caractère inconnu", false)  
+        return ("Autre", true)  
     end
 end
 

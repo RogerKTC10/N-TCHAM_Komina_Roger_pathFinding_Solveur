@@ -10,14 +10,14 @@ include("Comparaison.jl")
 include("affichage.jl")
 
 function main()
-    path = "data/street-map/Shangai_1_256.map"
+    path = "data/wc3maps512-map/bootybay.map"
     matrice = Remplir_Matrice_Cons(path)
     matriceV = Remplir_Matrice_Value(matrice)
 
     carte = Struct_Carte.Constructeur_Matrice_Cons(matrice)
     carte_djis = Struct_Carte.Constructeur_Matrice_Value(matriceV)
 
-    depart, arriver = detecter_zones_interet(matrice)
+    depart, arriver = trouver_points_pieges(matrice)
 
     println("Lancement BFS...")
     res_bfs = execution_BFS(carte, depart, arriver)
