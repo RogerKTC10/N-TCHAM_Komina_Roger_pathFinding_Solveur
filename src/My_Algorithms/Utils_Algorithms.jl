@@ -57,6 +57,8 @@ end
 #----------LA PARTIE QUI CONCERNE UNIQUEMENT LE A*--------------------
 
 #----------LA PARTIE QUI CONCERNE UNIQUEMENT LE GLOUTON--------------------
-
+function heuristique(pt1, pt2)
+    return abs(pt1[1] - pt2[1]) + abs(pt1[2] - pt2[2])
+end
 #----------LA PARTIE QUI CONCERNE l'AFFICHAGE--------------------
 
