@@ -39,11 +39,11 @@ function main()
     println("Glouton  | Coût Réel: $(res_glouton.distance) | États: $(res_glouton.activite)    | CPUtime: $(temps_glouton)")
      println("Génération des images de résultats...")
     
-    affichage_BFS(carte, res_bfs.chemin, cout_reel_bfs, res_bfs.activite, temps_bfs)
+    affichage_BFS(carte, res_bfs.chemin, cout_reel_bfs, res_bfs.activite)
     
-    affichage_Djistkra(carte_djis, res_djis.chemin, res_djis.cout, res_djis.activite, temps_djis)
+    affichage_Djistkra(carte_djis, res_djis.chemin, res_djis.cout, res_djis.activite)
     
-    affichage_Glouton(matriceV, res_glouton.chemin, res_glouton.distance, res_glouton.activite, temps_glouton)
+    #affichage_Glouton(matriceV, res_glouton.chemin, res_glouton.distance, res_glouton.activite, temps_glouton)
 end
 
 main()

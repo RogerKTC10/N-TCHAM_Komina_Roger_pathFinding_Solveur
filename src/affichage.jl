@@ -66,5 +66,3 @@ function affichage_Djistkra(carte_valu, chemin_djis, distance, activite)
     savefig(affich, "res/Djisktra_Res/resultat_dijkstra.png")
     return affich
 end
-
-
