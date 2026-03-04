@@ -55,7 +55,11 @@ function Voisinage_Autre(coordonner, carte)
 end
 
 #----------LA PARTIE QUI CONCERNE UNIQUEMENT LE A*--------------------
-
+function heuristique_Etoile(g, coord_voisin, coord_arriver)
+    h = heuristique(coord_voisin, coord_arriver)
+    func_Etoile = g + h
+    return func_Etoile
+end
 #----------LA PARTIE QUI CONCERNE UNIQUEMENT LE GLOUTON--------------------
 function heuristique(pt1, pt2)
     return abs(pt1[1] - pt2[1]) + abs(pt1[2] - pt2[2])
