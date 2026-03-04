@@ -46,18 +46,18 @@ function main()
     println("\n")
 
     println("Djikstra | Coût Réel: $(res_djis.cout)        | Etats: $(res_djis.activite)       | CPUtime: $(temps_djis)")
-    println("Les points du chemin BFS sont : \n", res_djis.chemin)
+    println("Les points du chemin Djikstra sont : \n", res_djis.chemin)
     println("\n")
     
     println("Glouton  | Coût Réel: $(res_glouton.distance) | Etats: $(res_glouton.activite)    | CPUtime: $(temps_glouton)")
-    println("Les points du chemin BFS sont : \n", res_glouton.chemin)
+    println("Les points du chemin Glouton sont : \n", res_glouton.chemin)
     println("\n")
 
     println("A*       | Cout Réel: $(res_etoile.cout)      | Etats: $(res_etoile.activite)     | CPUtime: $(temps_etoile)")
     println("Les points du chemin A* sont : \n", res_etoile.chemin)
     println("\n")
     
-    
+
     #affichage_BFS(carte, res_bfs.chemin, cout_reel_bfs, res_bfs.activite)
     #affichage_Djistkra(carteValuer, res_djis.chemin, res_djis.cout, res_djis.activite)
     #affichage_Glouton(matriceV, res_glouton.chemin, res_glouton.distance, res_glouton.activite, temps_glouton)
