@@ -1,5 +1,10 @@
 # pathFinding_Solveur PROJET SCIENTIFIQUE NANTES UNIVERSITE par N'TCHAM KOMINA ROGER.
 
+----PRECISION---- 
+La documentation n'est pas fait pour ce premier JALON, toute les info importantes sont dans le "README". Je prepare la documentation pour le rendu final , qui sera bien Structuré et explicatif au maximun.
+
+Pour exécuter mon travail, juste le lancer dans le terminal avec julia + include ("src/fichiermain.extension") et vous verrez les resultats dans le terminal.
+
                  --------------------------------------------------------------------------------------
                         Travail Réalisé par N'TCHAM KOMINA ROGER (Etudiant à Nantes Université)
                  --------------------------------------------------------------------------------------
@@ -22,6 +27,8 @@ Note : Pour l'instant l'affichage avec le paquettage "Plots" de julia n'est pas 
 
 Aussi je tiens à préciser que j'ai mis des petit commentaire dans mon code afin de pouvoir me reperer de fichier en fichier .
 
+PAR SOUCIS DE TEST, j'ai ecris une fonction trouver_points_pieges() pour pouvoir mettre mes points de depart et d'arriver un peu en avant et un peu en arriere des zones d'eau ou de sables en vue de voir l'activité et la difference d'action des algorithme implémenter .
+
 
 les fichiers "affichage.jl" n'est pas encore au point, et elle ne concerne pas ce premier rendu. 
 
@@ -36,4 +43,8 @@ Djisktra : Quant à lui, il suit une logique suit une logique de pondération : 
 Glouton : Ici il suit une logique d'instinct et d'anticipation : il délaisse totalement le coût du chemin déjà parcouru pour ne se concentrer que sur la distance estimée restant à parcourir. Contrairement à Dijkstra qui regarde en arrière pour assurer l'économie, le Glouton regarde exclusivement vers l'avant, choisissant systématiquement la case qui semble la plus proche de l'arrivée selon une fonction heuristique.
 
 A* : quant à lui, il suit une logique de compromis optimal : il fusionne la prudence de Dijkstra avec l'ambition du Glouton. Son originalité réside dans l'utilisation d'une fonction d'évaluation combinée,  que j'ai appeler "heuristique_Etoile" f(n) = g(n) + h(n), où il additionne le coût réel déjà payé (g) et l'estimation du coût restant (h). Cette approche permet de garantir l'optimalité du chemin trouvé (comme Dijkstra) tout en réduisant considérablement le nombre de nœuds explorés grâce au guidage de l'heuristique (comme le Glouton).
+
+
+
+
 # --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- #
