@@ -19,6 +19,10 @@ NB : Ce projet sera réalisé en "Julia" et est présenter comme un projet de sc
 
 
 Note : Pour l'instant l'affichage avec le paquettage "Plots" de julia n'est pas encore au points, mais je pense qu'elle le sera à la fin de la 2eme partie.
+
+
+les fichiers "affichage.jl" n'est pas encore au point, et elle ne concerne pas ce premier rendu. 
+
 L'essentielle de cette 1ere partie (Impléméntation des algorithme de recherche de chemin) sont implémenter avec les resultats visible.
 
 *La majeur partie du code est écrit dans le dossier src/ avec une separation conforme pour chaque algorithme.
