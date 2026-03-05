@@ -1,4 +1,4 @@
-# pathFinding_Solveur PROJET SCIENTIFIQUE NANTES UNIVERSITE
+# pathFinding_Solveur PROJET SCIENTIFIQUE NANTES UNIVERSITE par N'TCHAM KOMINA ROGER.
 
                  --------------------------------------------------------------------------------------
                         Travail Réalisé par N'TCHAM KOMINA ROGER (Etudiant à Nantes Université)
@@ -17,22 +17,11 @@ Le programme intègre une phase de comparaison au cours de laquelle les algorith
 
 NB : Ce projet sera réalisé en "Julia" et est présenter comme un projet de scientifique de stage par la L3 INFO-MATHS de Nantes Université.
 
+
+Note : Pour l'instant l'affichage avec le paquettage "Plots" de julia n'est pas encore au points, mais je pense qu'elle le sera à la fin de la 2eme partie.
+L'essentielle de cette 1ere partie (Impléméntation des algorithme de recherche de chemin) sont implémenter avec les resultats visible.
+
+*La majeur partie du code est écrit dans le dossier src/ avec une separation conforme pour chaque algorithme.
+
+BFS : Il suit une logique de propagation case par case, 
 # --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- #
-                            ---°--MON IDEE DE PLAN DE TRAVAIL QUE JE VEUX SUIVRE--°---
-                                        ---°--MON DOSSIER "src/"--°---
-src/
-├── Models/
-│   └── Struct_Carte.jl      
-├── Core/
-│   ├── Charger_Carte.jl     
-│   └── Transformation.jl    
-├── Utils/
-│   ├── TasMin.jl            
-│   ├── Additional_Action.jl 
-│   └── Affichage.jl         
-├── Algos/
-│   ├── BFS_Doc/BFS.jl
-│   ├── Dijkstra/Dijkstra.jl
-│   ├── Glouton_Doc/Glouton.jl
-│   └── A_Doc/A_etoile.jl           
-└── main.jl                 
