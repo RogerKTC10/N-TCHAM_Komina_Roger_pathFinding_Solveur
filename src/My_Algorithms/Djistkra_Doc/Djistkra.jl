@@ -1,5 +1,3 @@
-#using .DataStructure_Min
-#using .Struct_Carte
 using DataStructures
 
 function execution_Djisktra(G::Struct_Carte.Carte_Final_Value_Struct, vdepart, varriver)

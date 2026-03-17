@@ -8,7 +8,7 @@ include("My_Algorithms/A_Doc/A_etoile.jl")
 include("affichage.jl")
 
 function main()
-    path = "data/wc3maps512-map/dragonfire.map"
+    path = "data/street-map/Boston_0_512.map"
     matrice = Remplir_Matrice_Cons(path)
     matriceV = Remplir_Matrice_Value(matrice)
 
