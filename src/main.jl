@@ -69,10 +69,6 @@ function main()
     println("Les points du chemin A* sont : \n", res_etoile.chemin)
     println("\n")
     
-
-    #affichage_BFS(carte, res_bfs.chemin, cout_reel_bfs, res_bfs.activite)
-    #affichage_Djistkra(carteValuer, res_djis.chemin, res_djis.cout, res_djis.activite)
-    #affichage_Glouton(matriceV, res_glouton.chemin, res_glouton.distance, res_glouton.activite, temps_glouton)
 end
 
 main()
