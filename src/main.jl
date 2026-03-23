@@ -5,7 +5,6 @@ include("My_Algorithms/BFS_Doc/BFS.jl")
 include("My_Algorithms/Djistkra_Doc/Djistkra.jl")
 include("My_Algorithms/Glouton_Doc/Glouton.jl")
 include("My_Algorithms/A_Doc/A_etoile.jl")
-include("affichage.jl")
 
 function main()
     path = "data/street-map/Boston_0_512.map"
