@@ -20,7 +20,7 @@ function execution_Etoile_Adaptation(G::Carte_Final_Value_Struct, vdepart::Tuple
         actuel = dequeue!(maFile)
         nb_etat_evaluer = nb_etat_evaluer + 1
 
-        if actuel.x == varriver[1] && actuel.y == varriver[2]
+        if actuel.x == varriver[2] && actuel.y == varriver[1]
             return (chemin = reconstruire_chemin_adaptation(parents, depart_triplet, actuel), 
                     cout = g_score[actuel], 
                     activite = nb_etat_evaluer)
@@ -38,6 +38,5 @@ function execution_Etoile_Adaptation(G::Carte_Final_Value_Struct, vdepart::Tuple
             end
         end
     end
-
     return (chemin = [], cout = Inf, activite = nb_etat_evaluer)
 end
