@@ -4,13 +4,13 @@ include("Fournisseur&Client.jl")
 include("../Adaptation/Structure_Part2.jl")
 
 
-function plan_de_Mission()
+function planification_AMR()
 end
 
-function Acutaliser_le_chrono()
+function calcul_mission_complete()
 end
 
-function Reservation()
+function reunir_stat()
 end
 
 function Gestion_des_Accidents()
