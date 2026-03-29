@@ -5,10 +5,6 @@ include("Part_Two_Solveur/Adaptation/Evolution_A_etoile.jl")
 include("Part_Two_Solveur/Utilitaire_Part2.jl")
 include("Part_Two_Solveur/Action_Metier/DeplacementAMR.jl")
 
-# N'oublie pas d'inclure tes fonctions de zone si elles sont dans un autre fichier !
-# include("Entrepot_Tri.jl") 
-# include("Fournisseur&Client.jl")
-
 function main()
     path = "data/street-map/Boston_0_512.map"
     matrice = Remplir_Matrice_Cons(path)
