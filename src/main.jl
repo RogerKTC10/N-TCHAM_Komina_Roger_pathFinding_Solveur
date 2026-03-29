@@ -1,67 +1,72 @@
-include("Security_Transformation/Transformation.jl")
-include("Comparaison.jl") 
-include("My_Algorithms/DataStructure_Min.jl")
-include("My_Algorithms/BFS_Doc/BFS.jl")
-include("My_Algorithms/Djistkra_Doc/Djistkra.jl")
-include("My_Algorithms/Glouton_Doc/Glouton.jl")
-include("My_Algorithms/A_Doc/A_etoile.jl")
-
-#PARTIE 2 DU CROSS-DOCKING PROJECT
+# On garde tes includes tels quels, ils sont dans le bon ordre
+include("Part_Two_Solveur/Adaptation/Structure_Part2.jl")
+using .Structure_Part2
 include("Part_Two_Solveur/Adaptation/Evolution_A_etoile.jl")
 include("Part_Two_Solveur/Utilitaire_Part2.jl")
 include("Part_Two_Solveur/Action_Metier/DeplacementAMR.jl")
 
+# N'oublie pas d'inclure tes fonctions de zone si elles sont dans un autre fichier !
+# include("Entrepot_Tri.jl") 
+# include("Fournisseur&Client.jl")
 
 function main()
     path = "data/street-map/Boston_0_512.map"
     matrice = Remplir_Matrice_Cons(path)
     matriceV = Remplir_Matrice_Value(matrice)
-
     carte = Struct_Carte.Constructeur_Matrice_Value(matriceV)
+    
     carnet = Carnet_Commande()
-
     Generation_Commande(carnet, carte)
 
+    # 3. Initialisation des Agents
     parking_AMR = sous_ensemble_gauche(carte)
-    # On crée les agents (AgentAMR) au parking
-    liste_agents = [AgentAMR(i, parking[i], (0, 0)) for i in 1:20]
+    # On utilise bien parking_AMR[i] ici
+    liste_agents = [AgentAMR(i, parking_AMR[i], (0, 0)) for i in 1:20]
+    
     println("✅ 20 Agents prêts au départ (Colonne 1).")
 
-    # --- ÉTAPE 4 : PLANIFICATION ---
-    # Ici, G_dict peut être 'nothing' ou ta matriceV, 
-    # car ton A* pioche déjà dans 'carte.grille_val'
+    # 4. Planification Multi-Agents
     println("\nCalcul des missions en cours...")
-    
+    # On lance la planification globale
     archives = planification_AMR(liste_agents, carnet, carte, nothing)
 
-    # --- ÉTAPE 5 : RÉSULTATS ---
+    # 5. Affichage des Résultats
     println("\n--- BILAN DE LA SIMULATION ---")
-    println("Nombre total de missions : $(length(archives))")
+    println("Nombre total de missions traitées : $(length(archives))")
     
-    # Petit test de lecture sur la première mission
     if !isempty(archives)
-        m1 = archives[1]
-        println("Robot $(m1.id_robot) -> Colis $(m1.id_colis) livré au quai $(m1.quai_final)")
-        println("Durée totale (temps discret) : $(m1.trajet_detaille[end].t)")
+        m1 = archives[1] # On récupère la première mission archivée
+        
+        # On affiche les détails en utilisant les bons noms de champs
+        println("----------------------------------------")
+        println("Robot ID      : $(m1.id_robot)")
+        println("Colis ID      : $(m1.id_colis)")
+        println("Destination   : $(m1.quai_final)") # Affiche le Tuple (y, x)
+        
+        # Vérification du temps final sur le trajet détaillé
+        temps_final = m1.trajet_detaille[end].t
+        println("Temps d'arrivée : $temps_final secondes")
+        println("----------------------------------------")
     end
+end
+
+# Exécution
+main()
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-    """path = "data/street-map/Boston_0_512.map"
+"""
+    include("Security_Transformation/Transformation.jl")
+    include("Comparaison.jl") 
+    include("My_Algorithms/DataStructure_Min.jl")
+    include("My_Algorithms/BFS_Doc/BFS.jl")
+    include("My_Algorithms/Djistkra_Doc/Djistkra.jl")
+    include("My_Algorithms/Glouton_Doc/Glouton.jl")
+    include("My_Algorithms/A_Doc/A_etoile.jl")
+    
+    path = "data/street-map/Boston_0_512.map"
     matrice = Remplir_Matrice_Cons(path)
     matriceV = Remplir_Matrice_Value(matrice)
 
@@ -122,6 +127,3 @@ function main()
     println("Les points du chemin A* sont : \n", res_etoile.chemin)
     println("\n")"""
     
-end
-
-main()
