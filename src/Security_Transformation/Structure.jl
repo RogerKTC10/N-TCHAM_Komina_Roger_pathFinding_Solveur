@@ -9,7 +9,7 @@ module  Struct_Carte
         path :: String
         content :: String
     end
-#CA C'est pour le BFS uniquement
+
     struct Carte_final_Struct
         grille::Matrix{Char}  
         height::Int
