@@ -5,27 +5,29 @@ include("../My_Algorithms/Utils_Algorithms.jl")
 using .Structure_Part2 
 using .Struct_Carte
 
-# LIGNE 9 : On ajoute Struct_Carte. devant le type de la carte
-function voisinage_adaptation(triplet::Structure_Part2.tripletAMR, carte::Struct_Carte.Carte_Final_Value_Struct, G)
+
+function voisinage_SIPP(triplet::Structure_Part2.tripletAMR, carte::Struct_Carte.Carte_Final_Value_Struct, G, intervalles_dict)
     y_act = triplet.y
     x_act = triplet.x
     t_act = triplet.t
-    t_suiv = t_act + 1
+    t_suiv = t_act + 1 
 
     candidats = [Structure_Part2.tripletAMR(y_act - 1, x_act, t_suiv), 
                  Structure_Part2.tripletAMR(y_act + 1, x_act, t_suiv), 
                  Structure_Part2.tripletAMR(y_act, x_act + 1, t_suiv), 
                  Structure_Part2.tripletAMR(y_act, x_act - 1, t_suiv),
                  Structure_Part2.tripletAMR(y_act, x_act, t_suiv)]
-    
+             
     voisins_valides = Structure_Part2.tripletAMR[]
-    
     for c in candidats
-        # On utilise les champs de la carte (assure-toi que les noms height_val/width_val sont exacts)
-        if c.y >= 1 && c.y <= carte.height_val && 
-           c.x >= 1 && c.x <= carte.width_val
+        if c.y >= 1 && c.y <= carte.height_val && c.x >= 1 && c.x <= carte.width_val
             if BFS_Action_dict(c.y, c.x, G) 
-                push!(voisins_valides, c)
+                for inter in intervalles_dict[(c.y, c.x)]
+                    if c.t >= inter.t_debut && c.t <= inter.t_fin
+                        push!(voisins_valides, c)
+                        break
+                    end
+                end
             end
         end
     end

@@ -36,7 +36,6 @@ function sous_ensemble_droit(carte::Struct_Carte.Carte_Final_Value_Struct)
     liste_quais = []
     
     for y in 1:carte.height_val
-        # Utilisation de .grille_val ici aussi
         if carte.grille_val[y, N] == '.' 
             push!(liste_quais, (y, N))
         end

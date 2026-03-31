@@ -1,46 +1,59 @@
-# --- main.jl ---
-
+# 1. INCLUDES (L'ordre est vital)
 include("Part_Two_Solveur/Adaptation/Structure_Part2.jl")
-using .Structure_Part2
 include("./Security_Transformation/Structure.jl") 
-using .Struct_Carte
+include("./Security_Transformation/Transformation.jl")
+include("Part_Two_Solveur/Action_Metier/Entrepot_Tri.jl")
+include("Part_Two_Solveur/Action_Metier/Fournisseur&Client.jl")
 include("Part_Two_Solveur/Action_Metier/DeplacementAMR.jl")
 
+using .Structure_Part2
+using .Struct_Carte
+
 function main()
-    # 1. Préparation de la Carte
+    # 2. CHARGEMENT DE LA CARTE
     path = "data/street-map/Boston_0_512.map"
     matrice = Remplir_Matrice_Cons(path)
     matriceV = Remplir_Matrice_Value(matrice)
     carte = Struct_Carte.Constructeur_Matrice_Value(matriceV)
     
-    # 2. DÉFINITION DES ZONES (C'est ici que ça se passe)
-    # On appelle tes fonctions métier pour identifier les points sur la carte
+    # 3. EXTRACTION DES POINTS
     parking_points = sous_ensemble_gauche(carte)
-    relais_points  = zone_relais(carte)  # <--- LA VOILÀ, TA ZONE RELAIS
-    quais_points   = sous_ensemble_droit(carte)
-
-    # 3. CRÉATION PHYSIQUE DES ROBOTS (AMR)
-    # On transforme les points de parking en objets "AgentAMR"
-    liste_agents = [Structure_Part2.AgentAMR(i, parking_points[i], (0, 0)) for i in 1:length(parking_points)]
     
-    # 4. CRÉATION DU CARNET DE COMMANDES
-    carnet = Carnet_Commande()
-    # On remplit le carnet en utilisant les zones qu'on vient de trouver
-    Generation_Commande(carnet, carte) 
+    # 4. INITIALISATION SIPP
+    G_dict = Dict((y, x) => true for y in 1:carte.height_val, x in 1:carte.width_val 
+                  if carte.grille_val[y, x] == '.')
 
-    # 5. VÉRIFICATION ET SIMULATION
-    println("--- ÉTAT DU SYSTÈME ---")
-    println("Robots en zone parking : $(length(liste_agents))")
-    println("Points dans zone_relais : $(length(relais_points))")
-    println("Commandes générées     : $(length(carnet))")
-    
-    if !isempty(liste_agents) && !isempty(carnet)
-        println("\n🚀 Lancement de la planification...")
-        archives = planification_AMR(liste_agents, carnet, carte, nothing)
-        println("Simulation terminée avec succès.")
-    else
-        println("❌ ERREUR : La zone_relais ou le parking est vide sur Boston_0_512.")
+    intervalles_dict = Dict{Tuple{Int, Int}, Vector{Structure_Part2.IntervalleSIPP}}()
+    for (pos, _) in G_dict
+        intervalles_dict[pos] = [Structure_Part2.IntervalleSIPP(0, 1000, 1)]
     end
+
+    # 5. GÉNÉRATION RÉELLE DES COMMANDES
+    # On initialise un vecteur VIDE de type Commande
+    mon_carnet = Structure_Part2.Commande[] 
+    
+    # On remplit le carnet (La fonction push! dans Generation_Commande va le modifier)
+    Generation_Commande(mon_carnet, carte) 
+
+    # 6. FLOTTE D'AGENTS
+    # On crée les agents au parking
+    liste_agents = [Structure_Part2.AgentAMR(i, parking_points[i], (0, 0)) for i in 1:min(length(parking_points), 10)]
+
+    # 7. VÉRIFICATION AVANT LANCEMENT
+    println("--- ÉTAT DU SYSTÈME ---")
+    println("Nombre de robots : $(length(liste_agents))")
+    println("Nombre de commandes dans le carnet : $(length(mon_carnet))")
+    
+    if isempty(mon_carnet)
+        println("ERREUR : Le carnet est vide. Vérifie zone_relais(carte) dans Entrepot_Tri.jl")
+        return
+    end
+
+    # 8. PLANIFICATION SIPP
+    println("\nLancement de la planification...")
+    archives = planification_AMR(liste_agents, mon_carnet, carte, G_dict, intervalles_dict)
+    
+    println("Simulation terminée. $(length(archives)) missions archivées.")
 end
 
 main()

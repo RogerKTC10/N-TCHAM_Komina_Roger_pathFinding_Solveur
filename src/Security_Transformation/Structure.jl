@@ -15,7 +15,7 @@ module  Struct_Carte
         height::Int
         width::Int
     end
-#Ca c'est pour Djisktra 
+
     struct Carte_Final_Value_Struct
         grille_val::Matrix{Float64}
         height_val::Int

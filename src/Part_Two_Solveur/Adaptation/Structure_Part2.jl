@@ -1,9 +1,15 @@
 module Structure_Part2
-export tripletAMR, AgentAMR, Commande
+export tripletAMR, IntervalleSIPP, AgentAMR, Commande
     struct tripletAMR
         y::Int
         x::Int
         t::Int
+    end
+
+    struct IntervalleSIPP
+        t_debut::Int
+        t_fin::Int
+        crenaux::Int
     end
 
     struct AgentAMR
@@ -12,7 +18,6 @@ export tripletAMR, AgentAMR, Commande
         arrivee_ag::Tuple{Int, Int}
     end
 
-#----------Partie de Commande------
     struct Commande
         id_colis_relais::Int
         position_relais::Tuple{Int, Int}
