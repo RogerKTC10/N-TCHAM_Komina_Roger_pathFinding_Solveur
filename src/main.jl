@@ -1,5 +1,6 @@
 # 1. INCLUDES (L'ordre est vital)
 include("Part_Two_Solveur/Adaptation/Structure_Part2.jl")
+include("Part_Two_Solveur/Adaptation/Evolution_A_etoile.jl")
 include("./Security_Transformation/Structure.jl") 
 include("./Security_Transformation/Transformation.jl")
 include("Part_Two_Solveur/Action_Metier/Entrepot_Tri.jl")
@@ -44,8 +45,8 @@ function main()
     robot_test = Structure_Part2.AgentAMR(1, parking_points[1], (0,0))
     commande_1 = mon_carnet[1]
 
-    G_dict = Dict()
-    intervalles_dict = Dict()
+    G_dict = Dict{Tuple{Int, Int, Int}, Float64}() 
+    intervalles_dict = Dict{Tuple{Int, Int}, Vector{Tuple{Int, Int}}}()
 
     resultat = calcul_mission_complete(robot_test, commande_1, carte, G_dict, intervalles_dict)
     println("Trajet total : $(length(resultat.trajet)) étapes.")
