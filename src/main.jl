@@ -19,26 +19,27 @@ function main()
     # 3. EXTRACTION DES POINTS
     parking_points = sous_ensemble_gauche(carte)
     println("Les parkings sont : ", length(parking_points))
-    for (i, coord) in enumerate(parking_points)
+    #=for (i, coord) in enumerate(parking_points)
         println("Place $i :  ($(coord[1]), $(coord[2]))")
-    end
+    end=#
     
     zone_transfert = zone_relais(carte)
     println("Mes points de zones de transforts : ", length(zone_transfert))
-    for (i, coord) in enumerate(zone_transfert)
+    #=for (i, coord) in enumerate(zone_transfert)
         println("Relais $i :  ($(coord[1]), $(coord[2]))")
-    end
+    end=#
     
 
     quai_dechargement = sous_ensemble_droit(carte)
     println("Mes zone de dechargements :", length(quai_dechargement))
-    for (i, coord) in enumerate(quai_dechargement)
+    #=for (i, coord) in enumerate(quai_dechargement)
         println("Quai $i :  ($(coord[1]), $(coord[2]))")
-    end
+    end=#
     
     #---------CARNET DE COMMANDE---
+    tous_les_trejets = []
     mon_carnet = Carnet_Commande()
-    println("Liste de mes commandes disponible pour mes AMR : \n", mon_carnet)
+    #println("Liste de mes commandes disponible pour mes AMR : \n", mon_carnet)
 
     Generation_Commande(mon_carnet, carte)
 
@@ -48,11 +49,23 @@ function main()
     G_dict = Dict{Tuple{Int, Int, Int}, Float64}() 
     intervalles_dict = Dict{Tuple{Int, Int}, Vector{Tuple{Int, Int}}}()
 
+    for y in 1:carte.height_val
+        for x in 1:carte.width_val
+            intervalles_dict[(y, x)] = [(0, 1000)] 
+        end
+    end
+
     resultat = calcul_mission_complete(robot_test, commande_1, carte, G_dict, intervalles_dict)
-    println("Trajet total : $(length(resultat.trajet)) étapes.")
-    println("Départ : $(parking_points[1])")
-    println("Relais : $(commande_1.position_relais)")
-    println("Quai : $(commande_1.position_droit)")
+    if resultat !== nothing
+        push!(tous_les_trejets, resultat)
+        println("Trajet total : $(length(resultat.trajet)) étapes.")
+        println("Départ : $(parking_points[1])")
+        println("Relais : $(commande_1.position_relais)")
+        println("Quai : $(commande_1.position_droit)")
+        temps_arrivee = resultat.trajet[end].t
+        println("Le robot arrive au quai à T = $temps_arrivee")
+
+    end
 end
 main()
 

@@ -5,20 +5,29 @@ using .Structure_Part2
 using .Struct_Carte
 
 
-function execution_Etoile_Adaptation(G::Struct_Carte.Carte_Final_Value_Struct, vdepart::Tuple{Int,Int}, varriver::Tuple{Int,Int}, G_dict, intervalles_dict)
+#=function execution_Etoile_Adaptation(G::Struct_Carte.Carte_Final_Value_Struct, vdepart::Tuple{Int,Int}, varriver::Tuple{Int,Int}, G_dict, intervalles_dict)
+
     g_score = Dict{Structure_Part2.tripletAMR, Float64}() 
-    depart_triplet = Structure_Part2.tripletAMR(vdepart[1], vdepart[2], 0)
+    depart_triplet = Structure_Part2.tripletAMR(vdepart[1], vdepart[2], 0)=#
+
+
+function execution_Etoile_Adaptation(G, vdepart, varriver, G_dict, intervalles_dict)
+    dep_y, dep_x = Int(vdepart[1]), Int(vdepart[2])
+    arr_y, arr_x = Int(varriver[1]), Int(varriver[2])
+    
+    g_score = Dict{Structure_Part2.tripletAMR, Float64}() 
+    depart_triplet = Structure_Part2.tripletAMR(dep_y, dep_x, 0)
     g_score[depart_triplet] = 0.0
     parents = Dict{Structure_Part2.tripletAMR, Structure_Part2.tripletAMR}()
     nb_etat_evaluer = 0
     maFile = PriorityQueue{Structure_Part2.tripletAMR, Float64}()
 
-    maFile[depart_triplet] = 0.0 + h_adapter(depart_triplet, varriver)
+    maFile[depart_triplet] = 0.0 + h_adapter(depart_triplet, (arr_y, arr_x))
     while !isempty(maFile)
         actuel = dequeue!(maFile)
         nb_etat_evaluer = nb_etat_evaluer + 1
 
-        if actuel.y == varriver[1] && actuel.x == varriver[2] 
+        if actuel.y == arr_y && actuel.x == arr_x
             chemin_suivi = reconstruire_chemin_adaptation(parents, depart_triplet, actuel)
             return (chemin = chemin_suivi, cout = g_score[actuel], activite = nb_etat_evaluer)
         end
