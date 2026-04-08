@@ -8,8 +8,8 @@ Pour lancer la simulation et afficher le bilan statistique :
 
 - Exécutez la commande suivante : 
 ------------------------
-Julia  
-include("src/main.jl")
+* julia  
+* include("src/main.jl")
 ------------------------
 --------------------------------------------------------------------------------------------------------------------
 
