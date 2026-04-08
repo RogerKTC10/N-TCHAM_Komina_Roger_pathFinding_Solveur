@@ -1,4 +1,4 @@
-#=include("Part_Two_Solveur/Adaptation/Structure_Part2.jl")
+include("Part_Two_Solveur/Adaptation/Structure_Part2.jl")
 include("Part_Two_Solveur/Adaptation/Evolution_A_etoile.jl")
 include("./Security_Transformation/Structure.jl") 
 include("./Security_Transformation/Transformation.jl")
@@ -89,9 +89,9 @@ function main()
 
     end=#
 end
-main()=#
+main()
 
-    include("Security_Transformation/Transformation.jl")
+    #=include("Security_Transformation/Transformation.jl")
     include("Comparaison.jl") 
     include("My_Algorithms/DataStructure_Min.jl")
     include("My_Algorithms/BFS_Doc/BFS.jl")
@@ -162,4 +162,4 @@ main()=#
         println("Les points du chemin Glouton sont : \n", res_glouton.chemin)
         println("Les points du chemin A* sont : \n", res_etoile.chemin)
     end
-    main()
+    main()=#
