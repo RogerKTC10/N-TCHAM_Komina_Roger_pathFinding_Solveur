@@ -1,7 +1,3 @@
-#=include("AMR.jl")
-include("Entrepot_Tri.jl")
-include("Fournisseur&Client.jl")=#
-
 using .Structure_Part2
 
 function calcul_mission_complete(agent::Structure_Part2.AgentAMR, commande::Structure_Part2.Commande, carte, G_dict, intervalles_dict, t_depart::Int)
@@ -56,32 +52,21 @@ end
 
 function planification_AMR(liste_agents, carnet, carte, G_dict, intervalles_dict)
     archives_missions = [] 
-    
-    # ÉTAPE CLÉ : On crée un tableau de 15 zéros (un chrono par robot)
     temps_fin_robots = zeros(Int, length(liste_agents)) 
     
     for i in eachindex(carnet)
         idx_robot = ((i - 1) % length(liste_agents)) + 1
         agent_actuel = liste_agents[idx_robot]
         mission = carnet[i]
-        
-        # On récupère l'heure de départ de CE robot précis
         t_start = temps_fin_robots[idx_robot]
-        
-        # On calcule la mission en partant de t_start
         res = calcul_mission_complete(agent_actuel, mission, carte, G_dict, intervalles_dict, t_start)
         
         if res !== nothing && res.cout_total < 50000
             Mise_a_jour_Intervalles!(intervalles_dict, res.trajet)
-            
-            # On enregistre la mission
             info_precise = (id_robot = agent_actuel.id_Agent, id_colis = mission.id_colis_relais, quai_final = mission.numero_sous_ensDroit, trajet_detaille = res.trajet, duree = res.cout_total)
             push!(archives_missions, info_precise)
             
-            # MISE À JOUR : 
-            # 1. Le robot change de place (il est au quai)
             liste_agents[idx_robot] = res.agent_mis_a_jour
-            # 2. On met à jour son horloge pour la mission suivante !
             temps_fin_robots[idx_robot] = res.trajet[end].t
         else
             println("Mission $i (Robot $(agent_actuel.id_Agent)) : Impossible à T=$t_start")
@@ -110,7 +95,7 @@ function reunir_stats(archives_missions)
     end
 
     println("\n" * "="^80)
-    println("BILAN GÉNÉRAL DES MISSIONS (CARTE BERLIN)")
+    println("BILAN GENERAL DES MISSIONS")
     println("Total : ", length(archives_missions), " missions | Distance : ", total_pas, " cases | Moyenne : ", round(total_temps / length(archives_missions), digits=2))
     println("="^80)
 

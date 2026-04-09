@@ -29,7 +29,6 @@ function nonAlterer(nettoyage, v_height, v_width)
     return true
 end
 
-#--------------------------------------ALLOCATION MEMEOIRE DES MATRICE-------------------------
 function Matrice_Cons(h, w)
     return Matrix{Char}(undef, h, w)
 end
@@ -37,8 +36,7 @@ end
 function Matrice_Value(h, w)
     return Matrix{Float64}(undef, h, w)
 end
-#------------------------------------REMPLIR LES LIGNES ET COLONNES DE LA MATRICE----------------
-#Cette construction est pour l'utiliser au BFS
+
 function Remplir_Matrice_Cons(path::String)
     contenu = Extraction(path)
     h, w, donnee_recup = contenu
@@ -53,7 +51,7 @@ function Remplir_Matrice_Cons(path::String)
        return matriceCons
     end
 end
-#------------------------------------REMPLIR MATRICE LA MATRICE VALUER----------------
+
 function valuation(c::Char)
     if c == 'S'
         return 5.0 
@@ -78,4 +76,3 @@ function Remplir_Matrice_Value(matrice::Matrix{Char})
     end
     return matriceValue
 end
-

@@ -22,8 +22,6 @@ module  Struct_Carte
         width_val::Int
     end
 
-    #-----------CONSTRUCTEUR MATRICE_CONS DIRECTE-----------#
-
     function Constructeur_Matrice_Cons(grille::Matrix{Char})
         Carte_final_Struct(grille, size(grille, 1), size(grille, 2))
     end

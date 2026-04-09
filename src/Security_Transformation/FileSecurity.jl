@@ -46,8 +46,6 @@ function entete_certifie(elts::ChargementGrille)
     end
 end
 
-#----Une Pipeline pour faire toute les actions de validation de la carte 
-
 function charger_valider(path::String)
     elts = verif_extension(path) 
     nonVide(elts)
@@ -59,7 +57,6 @@ function charger_valider(path::String)
     end
 end
 
-#----Cette fonction me sera utilie dans la partie Transformation
 function scinder(lignes)
     debut = 1:4
     rest = 5:length(lignes)

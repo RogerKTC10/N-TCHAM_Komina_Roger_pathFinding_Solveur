@@ -71,25 +71,11 @@ function main()
     else
         println("Erreur : Aucune mission n'a pu être planifiée.")
     end
-    #=robot_test = Structure_Part2.AgentAMR(1, parking_points[1], (0,0))
-    commande_1 = mon_carnet[1]
 
-    
-    
-
-    resultat = calcul_mission_complete(robot_test, commande_1, carte, G_dict, intervalles_dict)
-    if resultat !== nothing
-        push!(tous_les_trajets, resultat)
-        println("Trajet total : $(length(resultat.trajet)) etats")
-        println("Départ : $(parking_points[1])")
-        println("Relais : $(commande_1.position_relais)")
-        println("Quai : $(commande_1.position_droit)")
-        temps_arrivee = resultat.trajet[end].t
-        println("Le robot arrive au quai à T = $temps_arrivee")
-
-    end=#
 end
 main()
+
+#------DECOMMENTER LE CODE CI DESSUS SI VOUS VOULER EXECUTER LA PARTIE 1 DU PROJET
 
     #=include("Security_Transformation/Transformation.jl")
     include("Comparaison.jl") 

@@ -19,22 +19,17 @@ function Generation_Commande(carnet, carte)
         nouvelle = Structure_Part2.Commande(id_du_colis, source, idx_quai, destination, false)
         
         push!(carnet, nouvelle)
-        #println("Commande $i : Case_CMD $source ➔ Case_QUAI $destination (Quai N° $idx_quai)")
     end
     
     println("Total Commande du relais : $(length(carnet)) commandes générées dans le carnet.")
 end
 
 global prochain_index = 1
-
-# On précise le module pour les types dans les arguments
 function attribution_Commande(agent::Structure_Part2.AgentAMR, carnet::Vector{Structure_Part2.Commande})
     global prochain_index
     
     if prochain_index <= length(carnet)
         mission = carnet[prochain_index]
-        
-        # On précise le module pour créer le nouvel agent
         agent_mis_a_jour = Structure_Part2.AgentAMR(
             agent.id_Agent, 
             mission.position_relais,
