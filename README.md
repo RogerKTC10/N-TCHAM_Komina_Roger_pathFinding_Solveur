@@ -2,8 +2,7 @@
 
 
 --------------------------------------------------------------------------------------------------------------------
-Pour cette partie, moi j'ai utiliser le fichier map (Berlin_0_512) pour faire mes tests, cependant dans le dossier
-data/street-map/ , j'ai mis d'autre fichier .map qui marche parfaitement pour le test
+### Pour cette partie, moi j'ai utiliser le fichier map (Berlin_0_512) pour faire mes tests, cependant dans le dossier data/street-map/ , j'ai mis d'autre fichier .map qui marche parfaitement pour le test
 --------------------------------------------------------------------------------------------------------------------
 
     * Etape d' Exécution du programme
@@ -11,10 +10,10 @@ Pour lancer la simulation et afficher le bilan statistique :
 
 - Ouvrez Julia dans le dossier racine du projet.
 
-- Exécutez la commande suivante : 
+- Exécutez les commandes suivante sans les "###": 
 ------------------------
-* julia  
-* include("src/main.jl")
+ ### julia  
+ ### include("src/main.jl")
 ------------------------
 --------------------------------------------------------------------------------------------------------------------
 
@@ -30,11 +29,11 @@ Le projet transforme la topologie urbaine en un entrepôt logistique structuré 
 --------------------------------------------------------------------------------------------------------------------
 
     * Spécifications Techniques
-Algorithmes : A* adapté combiné au SIPP (Safe Interval Path Planning) pour la gestion des collisions temporelles.
+### Algorithmes : A* adapté combiné au SIPP (Safe Interval Path Planning) pour la gestion des collisions temporelles.
 
-Performance : Planification de 309 missions avec équilibrage de charge automatisé.
+### Performance : Planification de 309 missions avec équilibrage de charge automatisé.
 
-Statistiques : Calcul en temps réel de la distance totale (env. 300 000+ cases) et du temps moyen.
+### Statistiques : Calcul en temps réel de la distance totale (env. 300 000+ cases) et du temps moyen.
 
 --------------------------------------------------------------------------------------------------------------------
 Les fonctionnalité implémentés sont l'adaptation du A* et la configuration structurelle de la carte dans une logique logistique de cross-dock puis les tests et resultats conclusive.
@@ -42,4 +41,5 @@ Les fonctionnalité implémentés sont l'adaptation du A* et la configuration st
 Aussi on a accordé une attention particuliere à la gestion de collision en vue de ne pas surchager et faire planter notre programme.
 
 --------------------------------------------------------------------------------------------------------------------
-Le projet comporte une documentation dans le dossier doc/ qui explique mes idées et la logique te travail suivie.
+### Le projet comporte une documentation dans le dossier doc/ qui explique mes idées et la logique te travail suivie.
+NB : les "###" sont lancer l'affichage markdown sur github.
