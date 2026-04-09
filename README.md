@@ -1,6 +1,6 @@
 # pathFinding_Solveur and CROSS-DOCKING Multi-Agent Solveur PROJET SCIENTIFIQUE NANTES UNIVERSITE par N'TCHAM KOMINA ROGER.
 
-### J'ai defini mes propres instances de cross-dock (qui cadre avec le type de carte de street-map). Mes tests sont donc fait sur les resources presentes dans data precisement (berlin). Le test marche avec n'importe quelle autre carte de street-map que j'ai mis dans data.
+* J'ai defini mes propres instances de cross-dock (qui cadre avec le type de carte de street-map). Mes tests sont donc fait sur les resources presentes dans data precisement (berlin). Le test marche avec n'importe quelle autre carte de street-map que j'ai mis dans data.
 --------------------------------------------------------------------------------------------------------------------
 ### Pour cette partie, moi j'ai utiliser le fichier map (Berlin_0_512) pour faire mes tests, cependant dans le dossier data/street-map/ , j'ai mis d'autre fichier .map qui marche parfaitement pour le test
 --------------------------------------------------------------------------------------------------------------------
